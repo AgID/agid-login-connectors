@@ -1,0 +1,32 @@
+Realizzare un connector (autenticatore) significa sviluppare un client OpenID Connect secondo lo standard previsto da AgID Login.
+Deve implementare la seguente interfaccia:
+  constructor(state) - obbligatorio
+    è il costruttore della classe all'interno del quale devono essere dichiarate le seguenti proprietà di classe, proprie del protocollo OAuth/OIDC:
+      name
+      client_id
+      client_secret
+      response_type
+      redirect_uri
+      scope
+      prompt
+      response_mode
+      state = state
+      nonce
+      client (istanza di Issuer)
+  getAuthURL() - obbligatorio
+    è la funzione che costruisce e ritorna la URL che realizza la Authentication Request  presso l'Authorization Endpoint OIDC.
+  getUserInfo(authorizationPostData, nonce, result, error) - obbligatorio
+    è la funzione che effettua la chiamata allo UserInfo Endpoint OIDC e recupera i dati (data) dell'utente
+  map(data) - obbligatorio
+    è la funzione che transcodifica i dati dell'utente (data) nel set minimo di attributi standard gestito da AgID Login:
+      provider: nome del provider che l'autenticatore implementa,
+      provider_id: identificatore unico dell'utente presso il provider,
+      firstname: nome dell'utente,
+      lastname: cognome dell'utente,
+      email: email dell'utente
+  getLogoutURL(redirect_uri) - facoltativo
+    costruisce la URL alla quale inviare la Logout Request, secondo le specifiche di Session Management (/session/end Endpoint)
+AgID Login implementerà il caricamento dinamico a runtime degli autenticatori, in maniera che sarà possibile seguire il seguente flusso:
+  sviluppo di un nuovo autenticatore
+  caricamento in FTP del file javascript del nuovo autenticatore su AgID Login
+  configurazione del connettore sui client tramite applicativo di admin
