@@ -1,0 +1,24 @@
+{
+    "google": {
+        "description": "Credenziali Google",
+        "client_id": "",
+        "client_secret": "",
+        "issuer": "https://accounts.google.com",
+        "authorization_endpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+        "token_endpoint": "https://www.googleapis.com/oauth2/v4/token",
+        "userinfo_endpoint": "https://www.googleapis.com/oauth2/v3/userinfo",
+        "jwks_uri": "https://www.googleapis.com/oauth2/v3/certs"
+    },
+
+    "microsoft": {
+        "description": "Credenziali Microsoft",
+        "client_id": "",
+        "client_secret": "",
+        "issuer": "https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0",
+        "authorization_endpoint": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        "token_endpoint": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+        "userinfo_endpoint": "https://graph.microsoft.com/oidc/userinfo",
+        "jwks_uri": "https://login.microsoftonline.com/common/discovery/v2.0/keys",
+        "logout_url": "https://login.microsoftonline.com/common/oauth2/v2.0/logout"
+    }
+}
